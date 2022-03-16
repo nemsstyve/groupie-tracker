@@ -1,4 +1,4 @@
-module github.com/Li-Khan/groupie-tracker
+module github.com/nemsstyve/groupie-tracker
 
 go 1.16
 
