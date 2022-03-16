@@ -12,7 +12,7 @@ import (
 
 //
 const (
-	APIUpdateTime = 24 * time.Hour
+	APIUpdateTime = 72 * time.Hour
 )
 
 func main() {
