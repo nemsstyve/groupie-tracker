@@ -2,4 +2,4 @@ module groupie-tracker
 
 go 1.18
 
-require github.com/julienschmidt/httprouter v1.3.0 //requis
+require github.com/julienschmidt/httprouter v1.3.0 //require

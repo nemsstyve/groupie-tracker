@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-// on initialise le début des différentes recherches
+// on initialise le début des différentes recherches pour chaque artiste
 func (info *AllInfo) SearchArtists(search string) {
 	date, err := strconv.Atoi(search)
 	if err == nil {
@@ -57,6 +57,7 @@ func (info *AllInfo) SearchArtists(search string) {
 	}
 }
 
+// cette fonction initialise toutes les recherches selon l' ID même si celle-ci sont dupliquées 
 func (info *AllInfo) isDuplicate(id int) bool {
 	for _, v := range info.Search {
 		if v.ID == id {
