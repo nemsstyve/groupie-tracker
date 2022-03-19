@@ -22,10 +22,11 @@ func (info *AllInfo) FilterArtist(f *Filters) error {
 	return nil
 }
 
+// cette fonction traite nos différents filtres selon le booléens et les erreurs
 func (f *Filters) filter(artist Artists) (bool, error) {
 	isFilter := IsFilter{}
 
-	// vérification par date de création
+	// on initie les deux variables de notre filtre creation de date
 	from, err := strconv.Atoi(f.CreationDateFrom)
 	if err != nil {
 		log.Println(err)
@@ -36,13 +37,14 @@ func (f *Filters) filter(artist Artists) (bool, error) {
 		log.Println(err)
 		return false, err
 	}
+	// là on pose la condition du filtre création de date et si cette condition n'est pas vrai alors il nous retourne not found
 	if artist.CreationDate >= from && artist.CreationDate <= to {
 		isFilter.CreatDate = true
 	} else {
 		return false, nil
 	}
 
-	// vérification du premier album
+	// on initie les deux variables de notre filtre FirstAlbum
 	from, err = strconv.Atoi(f.FirstAlbumFrom)
 	if err != nil {
 		log.Println(err)
@@ -53,15 +55,16 @@ func (f *Filters) filter(artist Artists) (bool, error) {
 		log.Println(err)
 		return false, err
 	}
-	frstAlbum, err := strconv.Atoi(artist.FirstAlbum[6:]) // on convertit la chaîne de caractère en int
+	frstAlbum, err := strconv.Atoi(artist.FirstAlbum[6:]) // on convertit chaque album qui est une chaîne de caractère en int
 	if err != nil {
 		log.Println(err)
 		return false, err
 	}
 
+	// là on pose la condition du filtre de l'Album
 	if frstAlbum >= from && frstAlbum <= to {
 		isFilter.FrstAlbum = true
-	} else {
+	} else { // si cette condition n'est pas vrai alors il nous retourne not found
 		return false, nil
 	}
 
@@ -77,13 +80,15 @@ func (f *Filters) filter(artist Artists) (bool, error) {
 		return false, err
 	}
 
-	members := len(artist.Members)
-	if members >= from && members <= to {
-		isFilter.NumOfmem = true
+	// là on pose la condition du filtre de l'Id du membre 
+	members := len(artist.Members) // là, on definit une variable membre qui sera égale à la fonction intégrée len renvoie la longueur de v, selon son type :
+	if members >= from && members <= to { 
+		isFilter.NumOfmem = true // le filtre de la condition posée affiche si la conditon est respectée, sinon n'affiche rien
 	} else {
 		return false, nil
 	}
 
+	// là on pose la condition du filtre de localisation
 	if len(f.Locations) == 0 {
 		isFilter.Location = true
 	} else {
@@ -102,9 +107,9 @@ func (f *Filters) filter(artist Artists) (bool, error) {
 		}
 	}
 
+	// là on définit la condition exact de notre filtre qui nous sera retourné sur noter localhost, sinon il ne nous retourne nul
 	if isFilter.CreatDate == true && isFilter.FrstAlbum == true && isFilter.NumOfmem == true && isFilter.Location == true {
 		return true, nil
 	}
-
 	return false, nil
 }

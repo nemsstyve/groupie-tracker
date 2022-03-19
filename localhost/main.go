@@ -9,9 +9,8 @@ import (
 	"groupie-tracker/outils"
 
 	"github.com/julienschmidt/httprouter" //httprouter permet un bon fonctionnement du http.Handler intégré
-	                                     //httprouter indique explicitement qu'une requête ne peut correspondre qu'à une route ou à aucune
-	                                    //La conception du routeur encourage la création d'API RESTful sensibles et hiérarchiques
-	                                   //Vous pouvez créer des serveurs de fichiers statiques efficaces
+	//httprouter indique explicitement qu'une requête ne peut correspondre qu'à une route ou à aucune
+	//La conception du routeur encourage la création d'API RESTful sensibles et hiérarchiques
 )
 
 //on définir le temps d'actualisation de l'API
@@ -21,21 +20,24 @@ const (
 
 func main() {
 	go api() //On démarre notre Api
-
-	r := httprouter.New() // on définit la variable httprouter
+	// on définit la variable httprouter
+	r := httprouter.New()
 	routes(r)
-
-	const PORT = ":3080" //On définit le port et le server que l'on utilisera
-
+	//On définit le port et le server que l'on utilisera
+	const PORT = ":3080"
+	// on lance notre programme sur notre localhost via le port 3080
 	fmt.Printf("Listening on the port %v\nhttp://localhost%v/\n", PORT, PORT)
-	log.Fatal(http.ListenAndServe(PORT, r)) // on lance notre programme sur notre localhost via le port 3080
+	log.Fatal(http.ListenAndServe(PORT, r))
 }
 
-func routes(r *httprouter.Router) { // Cette fonction permet de rédiriger nos routes vers nos différentes pages
-	r.ServeFiles("/public/*filepath", http.Dir("public")) //on importe nos différents fichiers HTML, CSS & JS
-	
-	//on retourne par la methode GET à notre routeur nos différentes outils
-	r.GET("/", outils.MainPage) 
+// Cette fonction permet de rédiriger nos routes vers nos différentes pages
+func routes(r *httprouter.Router) {
+	//on importe nos différents fichiers HTML, CSS & JS,
+	//le paramètre r correspondent à n’importe quoi jusqu’à la fin du chemin, y compris l’index du répertoire
+	r.ServeFiles("/public/*filepath", http.Dir("public"))
+
+	//Le routeur fait correspondre les demandes entrantes par la méthode de requête et le chemin d’accès
+	r.GET("/", outils.MainPage)
 	r.GET("/Artist/", outils.ArtistPage)
 	r.GET("/Artist/:id", outils.ArtistPage)
 	r.GET("/Info", outils.InfoPage)
@@ -49,6 +51,6 @@ func api() { //Cette fonction nous limite le temps d'actualisation et renvoi une
 		if err != nil {
 			log.Println(err)
 		}
-		time.Sleep(APIUpdateTime)
+		time.Sleep(APIUpdateTime) // Sleep interrompt l'actualisation du serveur en cours pendant au moins la durée définit. Une durée négative ou nulle entraîne le retour immédiat de Sleep.
 	}
 }

@@ -15,6 +15,25 @@
             padding: 60px 0;
         }
         
+        .fa-github:before {
+            content: "\f09b";
+        }
+        
+        .icon.alt:before {
+            background-color: #ffffff;
+            border-radius: 100%;
+            color: #242943;
+            display: inline-block;
+            height: 2em;
+            line-height: 2em;
+            text-align: center;
+            width: 2em;
+        }
+        
+        a.icon.alt:before {
+            transition: background-color 0.2s ease-in-out;
+        }
+        
         a {
             text-decoration: none;
         }
@@ -119,16 +138,15 @@
         </div>
         <!-- footer content -->
         <footer class="footer--little">
-            <ul class="copyright">
-                <li>Copyright © 2022 - Template by: Styve NEMATCHA</li>
-                <li><a href="https://github.com/nemsstyve?tab=repositories">All Repositories GitHub</a></li>
-            </ul>
-            <section>
-                <div class="social">
-                    <a href="https://github.com/nemsstyve?tab=repositories"><img src="../img/github-wh.png" class="github" alt="Icône Github" width="32" height="32" onmouseover="this.src='../img/github-bk.png'" onmouseout="this.src='../img/github-wh.png'"></a>
-                    <a href="https://git.ytrack.learn.ynov.com/SNEMATCHA"><img src="../img/git.ytrack.jpg" class="Ytrack" alt="Icône Ytrack" width="32" height="32" onmouseover="this.src='../img/téléchargé.jpg'" onmouseout="this.src='../img/git.ytrack.jpg'"></a>
-                </div>
-            </section>
+            <div class="inner">
+                <ul class="icons">
+                    <li><a href="https://github.com/nemsstyve" class="icon alt fa-github"><span class="label">GitHub</span></a></li>
+                </ul>
+                <ul class="copyright">
+                    <li>Copyright © 2022 - Template by: Styve NEMATCHA</li>
+                    <li><a href="https://github.com/nemsstyve?tab=repositories">All Repositories GitHub</a></li>
+                </ul>
+            </div>
         </footer>
         <!--end footer content -->
     </div>

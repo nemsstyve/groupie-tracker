@@ -5,6 +5,7 @@ import (
 	"strings"
 )
 
+// on initialise le début des différentes recherches
 func (info *AllInfo) SearchArtists(search string) {
 	date, err := strconv.Atoi(search)
 	if err == nil {
@@ -18,14 +19,14 @@ func (info *AllInfo) SearchArtists(search string) {
 	}
 
 	for _, v := range info.Art {
-		if strings.Contains(v.Name, search) {
-			if info.isDuplicate(v.ID) {
+		if strings.Contains(v.Name, search) {  // on pose la condition de la recherche du nom en lui disant si le nom recherché est présent dans notre struct
+			if info.isDuplicate(v.ID) {       // on lui dit même si l'info est dupliqué avec l'id, il continue la recherche
 				continue
 			}
 			info.Search = append(info.Search, v)
 		}
-		if strings.Contains(v.FirstAlbum, search) {
-			if info.isDuplicate(v.ID) {
+		if strings.Contains(v.FirstAlbum, search) {   // on pose la condition de la recherche du FirstAlbum en lui disant si la date de l'album recherchée est présente dans notre struct
+			if info.isDuplicate(v.ID) {              // on lui dit même si l'info est dupliqué avec l'id, il continue la recherche
 				continue
 			}
 			info.Search = append(info.Search, v)
