@@ -1,6 +1,6 @@
-FROM golang:1.16.3
+FROM golang:1.18
 
-LABEL base.name="Groupie Tracker"
+LABEL base.name="Groupie tracker"
 
 WORKDIR /app
 

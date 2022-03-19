@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="fr">
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -10,17 +11,18 @@
     <link rel="stylesheet" href="/public/css/style.css">
     <title>Groupie Tracker</title>
 </head>
-<body>
+
+<body style="background-color: #008080;">
     <h1 align="center">Groupie Tracker</h1>
     <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg navbar-light">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="/"></a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <nav class="navbar navbar-expand-lg navbar-light" style="height: 3rem">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="/">Home</a>
                         </li>
@@ -28,57 +30,51 @@
                             <a class="nav-link" href="/Info">Info</a>
                         </li>
                     </ul>
-                    
+
                     <button type="button" style="margin-right: 5px" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             Filter
                         </button>
-                                <!-- Modal -->
-                        <form class="" action="/Filter" method="POST">
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Filter</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                                    <div class="date-controls">
-                                                        <p>Creation date:</p>
-                                                        from <br> <input type="number" class="min-date" value="1900" min="1" max="9999" name="Creation-date-from"> <br>
-                                                        to <br> <input type="number" class="max-date" value="2030" min="1" max="9999" name="Creation-date-to">
-                                                    </div>
-                                                    <div class="date-controls">
-                                                        <br>
-                                                            <p>First Album:</p>
-                                                            from <br> <input type="number" class="min-date" value="1900" min="1" max="9999" name="First-album-from"> <br>
-                                                            to <br> <input type="number" class="max-date" value="2030" min="1" max="9999" name="First-album-to">
-                                                    </div>
-                                                    <div class="date-controls">
-                                                        <br>
-                                                            <p>Number of members:</p>
-                                                            from <br> <input type="number" class="min-date" value="1" min="1" max="99" name="Number-of-members-from"> <br>
-                                                            to <br> <input type="number" class="min-date" value="10" min="1" max="99" name="Number-of-members-to">
-                                                    </div>
-                                                    <br>
-                                                    <p>Locations:</p>
-                                                    <div class="loc">
-                                                        {{ range $value := .Rel.Index }}
-                                                            {{ range $key, $_ := .DatesLocations }}
-                                                                <label><input type="checkbox" name="location" value="{{ $key }}">{{ $key }}</label>
-                                                            {{ end }}
-                                                        {{ end }}
-                                                    </div>
-                                                </form>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <div class="btn-center">
-                                                    <button class="btn btn-filter btn-primary btn-outline-success" type="submit" required>Filter</button>
-                                            </div>
-                                        </div>
+                    <!-- Modal -->
+                    <form class="" action="/Filter" method="POST">
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Filter</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                </div>
-                            </div>
-                        </form>
+                                    <div class="modal-body">
+                                        <div class="date-controls">
+                                            <p>Creation date:</p>
+                                            from <br> <input type="number" class="min-date" value="1900" min="1" max="9999" name="Creation-date-from"> <br> to <br> <input type="number" class="max-date" value="2030" min="1" max="9999" name="Creation-date-to">
+                                        </div>
+                                        <div class="date-controls">
+                                            <br>
+                                            <p>First Album:</p>
+                                            from <br> <input type="number" class="min-date" value="1900" min="1" max="9999" name="First-album-from"> <br> to <br> <input type="number" class="max-date" value="2030" min="1" max="9999" name="First-album-to">
+                                        </div>
+                                        <div class="date-controls">
+                                            <br>
+                                            <p>Number of members:</p>
+                                            from <br> <input type="number" class="min-date" value="1" min="1" max="99" name="Number-of-members-from"> <br> to <br> <input type="number" class="min-date" value="10" min="1" max="99" name="Number-of-members-to">
+                                        </div>
+                                        <br>
+                                        <p>Locations:</p>
+                                        <div class="loc">
+                                            {{ range $value := .Rel.Index }} {{ range $key, $_ := .DatesLocations }}
+                                            <label><input type="checkbox" name="location" value="{{ $key }}">{{ $key }}</label> {{ end }} {{ end }}
+                                        </div>
+                    </form>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="btn-center">
+                            <button class="btn btn-filter btn-primary btn-outline-success" type="submit" required>Filter</button>
+                        </div>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    </form>
 
                     <form class="d-flex" action="/Search" method="POST">
                         <input list="search" id="search-choice" required name="search-choice" class="form-control me-2" type="search" placeholder="{{ .SearchArt }}" aria-label="Search">
@@ -104,23 +100,22 @@
         </nav>
         <div class="artists">
             {{ if not .Search }}
-                <div class="not-found">
-                    <h1>Not Found :(</h1>
+            <div class="not-found">
+                <h1>Not Found :(</h1>
+            </div>
+            {{ else }} {{ range .Search }}
+            <div class="card text-center m-2" style="width: 17rem">
+                <img src="{{ .Image }}" class="card-img-top" alt="{{ .Name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ .Name }}</h5>
+                    <p class="card-text">Creation date: {{.CreationDate}}</p>
+                    <button class="btn btn-primary" onclick="location.href='/Artist/{{ .ID }}'" type="button">Watch</button>
                 </div>
-            {{ else }}
-                {{ range .Search }}
-                <div class="card text-center m-2" style="width: 17rem">
-                    <img src="{{ .Image }}" class="card-img-top" alt="{{ .Name }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ .Name }}</h5>
-                        <p class="card-text">Creation date: {{.CreationDate}}</p>
-                        <button  class="btn btn-primary" onclick="location.href='/Artist/{{ .ID }}'" type="button">Watch</button>
-                    </div>
-                </div>
-                {{ end }}
-            {{ end }}
+            </div>
+            {{ end }} {{ end }}
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
+
 </html>

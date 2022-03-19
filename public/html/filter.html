@@ -10,10 +10,10 @@
     <link rel="stylesheet" href="/public/css/style.css">
     <title>Groupie Tracker</title>
 </head>
-<body>
+<body style="background-color: #008080;">
     <h1 align="center">Groupie Tracker</h1>
     <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg navbar-light">
+        <nav class="navbar navbar-expand-lg navbar-light"style="height: 3rem">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="/"></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,58 +30,50 @@
                     </ul>
                     
                     <button type="button" class="btn btn-primary" style="margin-right: 5px" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Filter
-                        </button>
-                                <!-- Modal -->
-                        <form class="" action="/Filter" method="POST">
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Filter</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        Filter
+                    </button>
+                    <!-- Modal -->
+                    <form class="" action="/Filter" method="POST">
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Filter</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="date-controls">
+                                            <p>Creation date:</p>
+                                            from <br> <input type="number" class="min-date" value="1900" min="1" max="9999" name="Creation-date-from"> <br> to <br> <input type="number" class="max-date" value="2030" min="1" max="9999" name="Creation-date-to">
                                         </div>
-                                        <div class="modal-body">
-                                                    <div class="date-controls">
-                                                        <p>Creation date:</p>
-                                                        from <br> <input type="number" class="min-date" value="1900" min="1" max="9999" name="Creation-date-from"> <br>
-                                                        to <br> <input type="number" class="max-date" value="2030" min="1" max="9999" name="Creation-date-to">
-                                                    </div>
-                                                    <div class="date-controls">
-                                                        <br>
-                                                            <p>First Album:</p>
-                                                            from <br> <input type="number" class="min-date" value="1900" min="1" max="9999" name="First-album-from"> <br>
-                                                            to <br> <input type="number" class="max-date" value="2030" min="1" max="9999" name="First-album-to">
-                                                    </div>
-                                                    <div class="date-controls">
-                                                        <br>
-                                                            <p>Number of members:</p>
-                                                            from <br> <input type="number" class="min-date" value="1" min="1" max="99" name="Number-of-members-from"> <br>
-                                                            to <br> <input type="number" class="min-date" value="10" min="1" max="99" name="Number-of-members-to">
-                                                    </div>
-                                                    <br>
-                                                    <p>Locations:</p>
-                                                    <div class="loc">
-                                                        {{ range $value := .Rel.Index }}
-                                                            {{ range $key, $_ := .DatesLocations }}
-                                                                <label><input type="checkbox" name="location" value="{{ $key }}">{{ $key }}</label>
-                                                            {{ end }}
-                                                        {{ end }}
-                                                    </div>
-                                                </form>
+                                        <div class="date-controls">
+                                            <br>
+                                            <p>First Album:</p>
+                                            from <br> <input type="number" class="min-date" value="1900" min="1" max="9999" name="First-album-from"> <br> to <br> <input type="number" class="max-date" value="2030" min="1" max="9999" name="First-album-to">
                                         </div>
-                                        <div class="modal-footer">
-                                            <div class="btn-center">
-                                                    <button class="btn btn-filter btn-primary btn-outline-success" type="submit" required>Filter</button>
-                                            </div>
+                                        <div class="date-controls">
+                                            <br>
+                                            <p>Number of members:</p>
+                                            from <br> <input type="number" class="min-date" value="1" min="1" max="99" name="Number-of-members-from"> <br> to <br> <input type="number" class="min-date" value="10" min="1" max="99" name="Number-of-members-to">
+                                        </div>
+                                        <br>
+                                        <p>Locations:</p>
+                                        <div class="loc">
+                                            {{ range $value := .Rel.Index }} {{ range $key, $_ := .DatesLocations }}
+                                            <label><input type="checkbox" name="location" value="{{ $key }}">{{ $key }}</label> {{ end }} {{ end }}
+                                        </div>
+                                        <div class="btn-center">
+                                            <button class="btn btn-filter btn-primary btn-outline-success" type="submit" required>Filter</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </form>
-
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
                     <form class="d-flex" action="/Search" method="POST">
-                        <input list="search" id="search-choice" required name="search-choice" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <input list="search" id="search-choice" name="search-choice" required class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit" required>Search</button>
                     </form>
                     <datalist id="search">

@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="fr">
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -10,29 +11,30 @@
     <link rel="stylesheet" href="/public/css/style.css">
     <title>Groupie Tracker</title>
 </head>
-<body>
+
+<body style="background-color: #b3b3B3;">
     <h1 align="center">Groupie Tracker</h1>
-    <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg navbar-light">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="/"></a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/">Home</a>
+    <div class="container-fluid ">
+        <nav class="navbar navbar-expand-lg navbar-light" style="height: 3rem">
+            <div class="container-fluid ">
+                <a class="navbar-brand " href="/ "></a>
+                <button class="navbar-toggler " type="button " data-bs-toggle="collapse " data-bs-target="#navbarSupportedContent " aria-controls="navbarSupportedContent " aria-expanded="false " aria-label="Toggle navigation ">
+                    <span class="navbar-toggler-icon "></span>
+                </button>
+                <div class="collapse navbar-collapse " id="navbarSupportedContent ">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+                        <li class="nav-item ">
+                            <a class="nav-link " aria-current="page " href="/ ">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="/Info">Info</a>
+                        <li class="nav-item ">
+                            <a class="nav-link active " href="/Info ">Info</a>
                         </li>
                     </ul>
-                        
+
                     <button type="button" class="btn btn-primary" style="margin-right: 5px" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Filter
                     </button>
-                            <!-- Modal -->
+                    <!-- Modal -->
                     <form class="" action="/Filter" method="POST">
                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
@@ -42,46 +44,38 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                                <div class="date-controls">
-                                                    <p>Creation date:</p>
-                                                    from <br> <input type="number" class="min-date" value="1900" min="1" max="9999" name="Creation-date-from"> <br>
-                                                    to <br> <input type="number" class="max-date" value="2030" min="1" max="9999" name="Creation-date-to">
-                                                </div>
-                                                <div class="date-controls">
-                                                    <br>
-                                                        <p>First Album:</p>
-                                                        from <br> <input type="number" class="min-date" value="1900" min="1" max="9999" name="First-album-from"> <br>
-                                                        to <br> <input type="number" class="max-date" value="2030" min="1" max="9999" name="First-album-to">
-                                                </div>
-                                                <div class="date-controls">
-                                                    <br>
-                                                        <p>Number of members:</p>
-                                                        from <br> <input type="number" class="min-date" value="1" min="1" max="99" name="Number-of-members-from"> <br>
-                                                        to <br> <input type="number" class="min-date" value="10" min="1" max="99" name="Number-of-members-to">
-                                                </div>
-                                                <br>
-                                                <p>Locations:</p>
-                                                <div class="loc">
-                                                    {{ range $value := .Rel.Index }}
-                                                        {{ range $key, $_ := .DatesLocations }}
-                                                            <label><input type="checkbox" name="location" value="{{ $key }}">{{ $key }}</label>
-                                                        {{ end }}
-                                                    {{ end }}
-                                                </div>
-                                            </form>
-                                    </div>
-                                    <div class="modal-footer">
+                                        <div class="date-controls">
+                                            <p>Creation date:</p>
+                                            from <br> <input type="number" class="min-date" value="1900" min="1" max="9999" name="Creation-date-from"> <br> to <br> <input type="number" class="max-date" value="2030" min="1" max="9999" name="Creation-date-to">
+                                        </div>
+                                        <div class="date-controls">
+                                            <br>
+                                            <p>First Album:</p>
+                                            from <br> <input type="number" class="min-date" value="1900" min="1" max="9999" name="First-album-from"> <br> to <br> <input type="number" class="max-date" value="2030" min="1" max="9999" name="First-album-to">
+                                        </div>
+                                        <div class="date-controls">
+                                            <br>
+                                            <p>Number of members:</p>
+                                            from <br> <input type="number" class="min-date" value="1" min="1" max="99" name="Number-of-members-from"> <br> to <br> <input type="number" class="min-date" value="10" min="1" max="99" name="Number-of-members-to">
+                                        </div>
+                                        <br>
+                                        <p>Locations:</p>
+                                        <div class="loc">
+                                            {{ range $value := .Rel.Index }} {{ range $key, $_ := .DatesLocations }}
+                                            <label><input type="checkbox" name="location" value="{{ $key }}">{{ $key }}</label> {{ end }} {{ end }}
+                                        </div>
                                         <div class="btn-center">
-                                                <button class="btn btn-filter btn-primary btn-outline-success" type="submit" required>Filter</button>
+                                            <button class="btn btn-filter btn-primary btn-outline-success" type="submit" required>Filter</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </form>
-
+                </div>
+                <div class="modal-footer">
                     <form class="d-flex" action="/Search" method="POST">
-                        <input list="search" id="search-choice" required name="search-choice" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <input list="search" id="search-choice" name="search-choice" required class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit" required>Search</button>
                     </form>
                     <datalist id="search">
@@ -103,41 +97,61 @@
             </div>
         </nav>
         <br>
-        <h3 id="objectives">Objectives</h3>
+        <h3 id="objectives ">Objectives</h3>
         <hr>
         <p>Groupie Trackers consists on receiving a given API and manipulate the data contained in it, in order to create a site, displaying the information.</p>
         <ul>
-        <li><p>It will be given an <a href="https://groupietrackers.herokuapp.com/api">API</a>, that consists in four parts:</p></li>
-        <li><p>The first one, <code>artists</code>, containing information about some bands and artists like their name(s), image, in which year they began their activity, the date of their first album and the members.</p></li>
-        <li><p>The second one, <code>locations</code>, consists in their last and/or upcoming concert locations.</p></li>
-        <li><p>The third one, <code>dates</code>, consists in their last and/or upcoming concert dates.</p></li>
-        <li><p>And the last one, <code>relation</code>, does the link between all the other parts, <code>artists</code>, <code>dates</code> and <code>locations</code>.</p></li>
-        <li><p>You must use at least the <code>artists</code> and the <code>relation</code> parts given in the API.</p></li>
-        <li><p>Given all this you should build a user friendly website where you can display the bands info through several data visualizations (examples : blocks, cards, tables, list, pages, graphics, etc). It is up to you to decide which info you will present and how you will display it.</p></li>
-        <li><p>This project also focuses on the creation of events and on their visualization.</p></li>
-        <li><p>An event consists in a system that responds to some kind of action triggered by the client, time, or any other factor.</p></li>
+            <li>
+                <p>It will be given an <a href="https://groupietrackers.herokuapp.com/api ">API</a>, that consists in four parts:</p>
+            </li>
+            <li>
+                <p>The first one, <code>artists</code>, containing information about some bands and artists like their name(s), image, in which year they began their activity, the date of their first album and the members.</p>
+            </li>
+            <li>
+                <p>The second one, <code>locations</code>, consists in their last and/or upcoming concert locations.</p>
+            </li>
+            <li>
+                <p>The third one, <code>dates</code>, consists in their last and/or upcoming concert dates.</p>
+            </li>
+            <li>
+                <p>And the last one, <code>relation</code>, does the link between all the other parts, <code>artists</code>, <code>dates</code> and <code>locations</code>.</p>
+            </li>
+            <li>
+                <p>You must use at least the <code>artists</code> and the <code>relation</code> parts given in the API.</p>
+            </li>
+            <li>
+                <p>Given all this you should build a user friendly website where you can display the bands info through several data visualizations (examples : blocks, cards, tables, list, pages, graphics, etc). It is up to you to decide which info you will
+                    present and how you will display it.</p>
+            </li>
+            <li>
+                <p>This project also focuses on the creation of events and on their visualization.</p>
+            </li>
+            <li>
+                <p>An event consists in a system that responds to some kind of action triggered by the client, time, or any other factor.</p>
+            </li>
         </ul>
-        <h3 id="instructions">Instructions</h3>
+        <h3 id="instructions ">Instructions</h3>
         <hr>
         <ul>
-        <li>The backend must be written in <strong>Go</strong>.</li>
-        <li>The code must respect the <a href="../good-practices/README.md"><strong>good practices</strong></a>.</li>
-        <li>It is recommended that the code should present a <strong>test file</strong>.</li>
+            <li>The backend must be written in <strong>Go</strong>.</li>
+            <li>The code must respect the <a href="../good-practices/README.md "><strong>good practices</strong></a>.</li>
+            <li>It is recommended that the code should present a <strong>test file</strong>.</li>
         </ul>
-        <h3 id="usage">Usage</h3>
+        <h3 id="usage ">Usage</h3>
         <hr>
         <ul>
-        <li>You can see an example of a RESTful API <a href="https://rickandmortyapi.com/">here</a></li>
+            <li>You can see an example of a RESTful API <a href="https://rickandmortyapi.com/ ">here</a></li>
         </ul>
         <p>This project will help you learn about :</p>
         <ul>
-        <li>Manipulation and storage of data.</li>
-        <li><a href="https://www.json.org/json-en.html">JSON</a> files and format.</li>
-        <li>HTML.</li>
-        <li>Event creation and display.</li>
-        <li><a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events">Events</a>.</li>
+            <li>Manipulation and storage of data.</li>
+            <li><a href="https://www.json.org/json-en.html ">JSON</a> files and format.</li>
+            <li>HTML.</li>
+            <li>Event creation and display.</li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events ">Events</a>.</li>
         </ul>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js " integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p " crossorigin="anonymous "></script>
 </body>
+
 </html>

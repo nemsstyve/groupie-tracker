@@ -1,0 +1,6 @@
+{
+    "C_Cpp.autocompleteAddParentheses": true,
+    "go.autocompleteUnimportedPackages": true,
+    "python.disableInstallationCheck": true,
+    "redhat.telemetry.enabled": true
+}

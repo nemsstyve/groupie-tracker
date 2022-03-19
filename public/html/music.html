@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="/public/css/style.css">
+    <title>Groupie Tracker</title>
+    <script src="https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?album_type=SINGLE&offset=20&limit=10" type=" ">
+    </script>
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+    <link rel="stylesheet" type="text/css" href="../template.css" />
+    <script type="text/javascript" src='../test-credentials.js'></script>
+    <script type="audio/javascript" src="http://open.spotify.com/track/6rqhFgbbKwnb9MLmUQDhG6"></script>
+
+    <!-- 5995d5e4-30be-4d48-93e5-c9414f6aa56a -->
+</head>
+
+<body style="background-color: #008080;">
+    <h1 align="center">Groupie Tracker</h1>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Info">Info</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="artInfo row" style="position: relative;">
+            <div class="col-lg-2 d-flex flex-row bd-highlight mb-3" style="position:initial">
+                <div class="card text-center m-2" style="width: 20rem">
+                    <img src="{{ .Art.Image }}" class="card-img-top" alt="{{ .Art.Name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ .Art.Name }}</h5>
+                        <p class="card-title"><strong>Creation date:</strong></p>
+                        <p class="card-title">{{ .Art.CreationDate }}</p>
+                        <p class="card-title"><strong>First album:</strong></p>
+                        <p class="card-title">{{ .Art.FirstAlbum }}</p>
+                        <p class="card-title"><strong>Members:</strong></p>
+                        {{ range .Art.Members }}
+                        <p class="card-text">{{ . }}</p>
+                        {{ end }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-2 d-flex flex-row bd-highlight mb-3" style="position:-ms-page">
+                <div class="card text-center m-2" style="width: 20rem">
+                    <div class="card-header">
+                        {{ .Art.Name }}
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Concert dates</h5>
+                        {{ range $loc, $date := .Rel.DatesLocations }}
+                        <p class="card-text locations">{{ $loc }}</p>
+                        {{ range $date }}
+                        <p class="card-text">{{ . }}</p>
+                        {{ end }} {{ end }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8 d-flex flex-row bd-highlight mb-3" id="markers-on-the-map">
+                <div id="map"></div>
+            </div>
+        </div>
+
+    </div>
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+
+</html>
