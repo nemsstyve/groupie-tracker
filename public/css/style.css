@@ -4,6 +4,25 @@
     src: url('../font.ttf')/*FIN DEFINITION POLICE D'ECRITURE*/
 }
 
+footer {
+    padding: 60px 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.social img {
+    width: 40px;
+    height: 40px;
+}
+
+.footer--little {
+    padding: 10px;
+    background-color: black;
+    text-align: center;
+}
+
 .navbar {
     margin-top: 8px;
     background-color: #626262;

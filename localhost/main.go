@@ -22,19 +22,20 @@ const (
 func main() {
 	go api() //On démarre notre Api
 
-	r := httprouter.New()
+	r := httprouter.New() // on définit la variable httprouter
 	routes(r)
 
 	const PORT = ":3080" //On définit le port et le server que l'on utilisera
 
 	fmt.Printf("Listening on the port %v\nhttp://localhost%v/\n", PORT, PORT)
-	log.Fatal(http.ListenAndServe(PORT, r))
+	log.Fatal(http.ListenAndServe(PORT, r)) // on lance notre programme sur notre localhost via le port 3080
 }
 
 func routes(r *httprouter.Router) { // Cette fonction permet de rédiriger nos routes vers nos différentes pages
 	r.ServeFiles("/public/*filepath", http.Dir("public")) //on importe nos différents fichiers HTML, CSS & JS
-
-	r.GET("/", outils.MainPage)
+	
+	//on retourne par la methode GET à notre routeur nos différentes outils
+	r.GET("/", outils.MainPage) 
 	r.GET("/Artist/", outils.ArtistPage)
 	r.GET("/Artist/:id", outils.ArtistPage)
 	r.GET("/Info", outils.InfoPage)
