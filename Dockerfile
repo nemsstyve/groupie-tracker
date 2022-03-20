@@ -6,8 +6,8 @@ WORKDIR /app
 
 COPY . .
 
-RUN go build -o main ./cmd/
+RUN go build -o main ./localhost/
 
-EXPOSE 8080
+EXPOSE 3080
 
 ENTRYPOINT ["./main"]
